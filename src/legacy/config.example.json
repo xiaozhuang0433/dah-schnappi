@@ -1,0 +1,8 @@
+{
+  "gitlab_url": "http://192.168.1.231",
+  "private_token": "glpat-your_token_here",
+  "since_date": "2026-01-19T00:00:00Z",
+  "until_date": null,
+  "output_file": "commits_2026-01-19_to_25.json",
+  "include_branches": true
+}
