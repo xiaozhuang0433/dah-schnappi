@@ -10,7 +10,7 @@
 [![React](https://img.shields.io/badge/React-18.3-blue?logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?logo=typescript)](https://www.typescriptlang.org)
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow?logo=python)](https://www.python.org)
-[![License](https://img.shields.io/badge/License-内部项目-red)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **DahSchnappi** — 源自德语 "Schnappi"（小鳄鱼）🐊
 
@@ -355,13 +355,19 @@ pytest tests/test_database.py
 
 ## 🤝 贡献
 
-本项目当前为内部项目。如有问题或建议，请联系开发团队。
+欢迎贡献！请随时提交 Pull Request。
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
 
 ---
 
 ## 📄 许可证
 
-内部项目，版权所有。
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
 ---
 
@@ -370,7 +376,7 @@ pytest tests/test_database.py
 如有问题或疑问：
 - 📧 邮箱：[support@example.com]
 - 📚 文档：[DEPLOYMENT.md](DEPLOYMENT.md)
-- 🐛 问题追踪：[GitHub Issues](https://github.com/xxx/issues)
+- 🐛 问题追踪：[GitHub Issues](https://github.com/xiaozhuang0433/dah-schnappi/issues)
 
 ---
 

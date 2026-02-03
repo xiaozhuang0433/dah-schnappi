@@ -10,7 +10,7 @@
 [![React](https://img.shields.io/badge/React-18.3-blue?logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?logo=typescript)](https://www.typescriptlang.org)
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow?logo=python)](https://www.python.org)
-[![License](https://img.shields.io/badge/License-Internal-red)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **DahSchnappi** — From German "Schnappi" (little crocodile) 🐊
 
@@ -355,13 +355,19 @@ For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## 🤝 Contributing
 
-This is currently an internal project. For questions or suggestions, please contact the development team.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-Internal project. All rights reserved.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -370,7 +376,7 @@ Internal project. All rights reserved.
 For issues or questions:
 - 📧 Email: [support@example.com]
 - 📚 Documentation: [DEPLOYMENT.md](DEPLOYMENT.md)
-- 🐛 Issue Tracker: [GitHub Issues](https://github.com/xxx/issues)
+- 🐛 Issue Tracker: [GitHub Issues](https://github.com/xiaozhuang0433/dah-schnappi/issues)
 
 ---
 
