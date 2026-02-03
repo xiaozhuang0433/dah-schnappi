@@ -61,10 +61,8 @@ commits_*.json
 commits_*.txt
 commits_*.md
 
-# Work logs (keep structure, ignore content)
-work_report/*.md
-!work_report/.gitkeep
-work_report/archive/*.md
+# Work logs - COMPLETELY IGNORE (sensitive personal data)
+work_report/
 
 # Temporary files
 *.tmp
