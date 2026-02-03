@@ -2,7 +2,7 @@
 Database Abstraction Layer
 
 This module provides an abstract base class for database operations,
-allowing for pluggable database implementations (DuckDB, PostgreSQL, etc.).
+allowing for pluggable database implementations (SQLite, PostgreSQL, MySQL).
 """
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic, Type, Optional, List, Dict, Any

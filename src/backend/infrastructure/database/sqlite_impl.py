@@ -1,34 +1,34 @@
 """
-DuckDB Database Implementation
+SQLite Database Implementation
 
-This module provides a DuckDB implementation of the DatabaseABC interface.
-DuckDB is an embedded analytical database with SQL support.
+This module provides a SQLite implementation of the DatabaseABC interface.
+SQLite is an embedded transactional database with SQL support.
 """
-import duckdb
+import sqlite3
 import os
-from datetime import datetime
 from typing import Type, Optional, List, Dict, Any
 from .base import DatabaseABC
 
 
-class DuckDBDatabase(DatabaseABC):
-    """DuckDB 数据库实现
+class SQLiteDatabase(DatabaseABC):
+    """SQLite 数据库实现
 
-    提供 DuckDB 数据库的具体实现，包括：
+    提供 SQLite 数据库的具体实现，包括：
     - 自动建表
     - CRUD 操作
     - 原生 SQL 执行
     - 外键约束
+    - ACID 事务
     """
 
-    def __init__(self, db_path: str = "data/worklog.db"):
-        """初始化 DuckDB 连接
+    def __init__(self, db_path: str = "data/dahschnappi.db"):
+        """初始化 SQLite 连接
 
         Args:
-            db_path: 数据库文件路径，默认为 data/worklog.db
+            db_path: 数据库文件路径，默认为 data/dahschnappi.db
         """
         self.db_path = db_path
-        self.conn: Optional[duckdb.DuckDBPyConnection] = None
+        self.conn: Optional[sqlite3.Connection] = None
         self._ensure_db_directory()
 
     def _ensure_db_directory(self) -> None:
@@ -39,7 +39,14 @@ class DuckDBDatabase(DatabaseABC):
 
     def connect(self) -> None:
         """连接数据库并初始化表结构"""
-        self.conn = duckdb.connect(self.db_path)
+        self.conn = sqlite3.connect(
+            self.db_path,
+            check_same_thread=False,
+            isolation_level=None  # Autocommit mode
+        )
+        self.conn.row_factory = sqlite3.Row
+        # 启用外键约束
+        self.conn.execute("PRAGMA foreign_keys = ON")
         self._init_tables()
 
     def disconnect(self) -> None:
@@ -53,10 +60,10 @@ class DuckDBDatabase(DatabaseABC):
         table_name = model.__tablename__
         columns = ', '.join(data.keys())
         placeholders = ', '.join(['?' for _ in data])
-        sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders}) RETURNING id"
+        sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
 
-        result = self.conn.execute(sql, list(data.values())).fetchone()
-        return result[0] if result else None
+        cursor = self.conn.execute(sql, list(data.values()))
+        return cursor.lastrowid
 
     def get_by_id(self, model: Type, id: int) -> Optional[Any]:
         """根据 ID 获取数据"""
@@ -94,8 +101,8 @@ class DuckDBDatabase(DatabaseABC):
 
     def execute_sql(self, sql: str, params: Dict[str, Any] = None) -> List[Dict]:
         """执行原始 SQL"""
-        result = self.conn.execute(sql, params or []).fetchall()
-        return [dict(row) for row in result]
+        cursor = self.conn.execute(sql, params or [])
+        return [dict(row) for row in cursor.fetchall()]
 
     def get_all(self, model: Type, limit: int = None, offset: int = 0) -> List[Any]:
         """获取所有数据"""
@@ -132,7 +139,7 @@ class DuckDBDatabase(DatabaseABC):
         # 创建 users 表
         self.conn.execute("""
             CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR(50) UNIQUE NOT NULL,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password_hash VARCHAR(255) NOT NULL,
@@ -144,14 +151,14 @@ class DuckDBDatabase(DatabaseABC):
         # 创建 user_configs 表
         self.conn.execute("""
             CREATE TABLE IF NOT EXISTS user_configs (
-                id INTEGER PRIMARY KEY,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER NOT NULL UNIQUE,
                 gitlab_url VARCHAR(255),
                 gitlab_token VARCHAR(255),
                 github_username VARCHAR(100),
                 github_token VARCHAR(255),
                 default_platform VARCHAR(20) DEFAULT 'gitlab',
-                include_branches BOOLEAN DEFAULT false,
+                include_branches BOOLEAN DEFAULT 0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -171,19 +178,19 @@ class DuckDBDatabase(DatabaseABC):
 
     def execute_sql_script(self, script: str) -> None:
         """执行 SQL 脚本（用于批量操作或迁移）"""
-        self.conn.execute(script)
+        self.conn.executescript(script)
 
     def table_exists(self, table_name: str) -> bool:
         """检查表是否存在"""
         sql = """
-            SELECT COUNT(*) FROM information_schema.tables
-            WHERE table_name = ?
+            SELECT COUNT(*) FROM sqlite_master
+            WHERE type='table' AND name=?
         """
         result = self.conn.execute(sql, [table_name]).fetchone()
         return result[0] > 0 if result else False
 
     def get_table_info(self, table_name: str) -> List[Dict]:
         """获取表结构信息"""
-        sql = f"DESCRIBE {table_name}"
+        sql = f"PRAGMA table_info({table_name})"
         columns = self.conn.execute(sql).fetchall()
         return [dict(row) for row in columns]

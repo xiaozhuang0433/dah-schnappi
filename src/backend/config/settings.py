@@ -15,13 +15,30 @@ class Settings(BaseSettings):
     """
 
     # 应用配置
-    APP_NAME: str = "Work Log System"
+    APP_NAME: str = "DahSchnappi"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
 
     # 数据库配置
-    DATABASE_IMPLEMENTATION: str = "duckdb"  # 可选: duckdb, postgresql
-    DUCKDB_PATH: str = "data/worklog.db"
+    DATABASE_IMPLEMENTATION: str = "sqlite"  # 可选: sqlite, postgresql, mysql
+
+    # SQLite 配置
+    SQLITE_PATH: str = "data/dahschnappi.db"
+
+    # PostgreSQL 配置
+    POSTGRES_HOST: str = "localhost"
+    POSTGRES_PORT: int = 5432
+    POSTGRES_DATABASE: str = "dahschnappi"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = ""
+
+    # MySQL 配置
+    MYSQL_HOST: str = "localhost"
+    MYSQL_PORT: int = 3306
+    MYSQL_DATABASE: str = "dahschnappi"
+    MYSQL_USER: str = "root"
+    MYSQL_PASSWORD: str = ""
+    MYSQL_CHARSET: str = "utf8mb4"
 
     # 缓存配置
     CACHE_IMPLEMENTATION: str = "memory"  # 可选: memory, redis

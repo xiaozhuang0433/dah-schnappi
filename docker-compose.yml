@@ -12,8 +12,8 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - WORKLOG_ENV=production
-      - DATABASE_IMPLEMENTATION=duckdb
-      - DUCKDB_PATH=/app/data/worklog.db
+      - DATABASE_IMPLEMENTATION=sqlite
+      - SQLITE_PATH=/app/data/dahschnappi.db
       - CACHE_IMPLEMENTATION=memory
       - CACHE_MAX_SIZE=1000
       - CACHE_DEFAULT_TTL=3600

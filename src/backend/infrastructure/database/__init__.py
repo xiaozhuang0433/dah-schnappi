@@ -2,9 +2,12 @@
 Database Infrastructure
 
 导出数据库抽象层和实现。
+支持：SQLite (默认), PostgreSQL, MySQL
 """
 from .base import DatabaseABC
-from .duckdb_impl import DuckDBDatabase
+from .sqlite_impl import SQLiteDatabase
+from .postgres_impl import PostgreSQLDatabase
+from .mysql_impl import MySQLDatabase
 from .models import (
     UserBase,
     UserCreate,
@@ -24,7 +27,9 @@ from .models import (
 
 __all__ = [
     "DatabaseABC",
-    "DuckDBDatabase",
+    "SQLiteDatabase",
+    "PostgreSQLDatabase",
+    "MySQLDatabase",
     "UserBase",
     "UserCreate",
     "UserUpdate",
