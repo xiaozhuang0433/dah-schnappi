@@ -8,6 +8,7 @@ from .base import DatabaseABC
 from .sqlite_impl import SQLiteDatabase
 from .postgres_impl import PostgreSQLDatabase
 from .mysql_impl import MySQLDatabase
+from .factory import db
 from .models import (
     UserBase,
     UserCreate,
@@ -27,6 +28,7 @@ from .models import (
 
 __all__ = [
     "DatabaseABC",
+    "db",
     "SQLiteDatabase",
     "PostgreSQLDatabase",
     "MySQLDatabase",

@@ -6,7 +6,7 @@ FastAPI 依赖项，用于保护需要认证的路由。
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Optional
-from src.infrastructure.database import db, UserInDB
+from infrastructure.database import db, UserInDB
 from .security import decode_access_token
 
 

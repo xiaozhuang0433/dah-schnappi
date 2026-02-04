@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from passlib.context import CryptContext
 from jose import JWTError, jwt
-from src.config.settings import settings
+from config.settings import settings
 
 
 # 密码哈希上下文

@@ -6,7 +6,11 @@ Cache Infrastructure
 from .base import CacheABC
 from .memory_impl import MemoryCache
 
+# 全局缓存实例
+cache = MemoryCache()
+
 __all__ = [
     "CacheABC",
+    "cache",
     "MemoryCache"
 ]

@@ -8,14 +8,14 @@ from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
-from ..auth.dependencies import get_current_user_id, get_current_user
-from ..infrastructure.database import db, UserConfigInDB
-from ..services.chat_service import get_chat_service
-from ..services.summary_service import get_summary_service
-from ..services.download_service import get_download_service
-from ..core.models import WorkLogReport
-from ..utils.logger import get_logger
-from ..utils.datetime import parse_datetime
+from auth.dependencies import get_current_user_id, get_current_user
+from infrastructure.database import db, UserConfigInDB
+from services.chat_service import get_chat_service
+from services.summary_service import get_summary_service
+from services.download_service import get_download_service
+from core.models import WorkLogReport
+from utils.logger import get_logger
+from utils.datetime import parse_datetime
 
 
 router = APIRouter(prefix="/api/chat", tags=["Chat"])
@@ -155,11 +155,11 @@ async def generate_worklog(
 
         # 使用默认时间范围（本周）
         if not since_date or not until_date:
-            from ..utils.datetime import get_week_range
+            from utils.datetime import get_week_range
             since_date, until_date = get_week_range()
 
         # 获取提交记录
-        from ..mcp_servers import MCPServerFactory
+        from mcp_servers import MCPServerFactory
         server = MCPServerFactory.get_default_server(config)
 
         commits = await server.get_commits(
@@ -225,7 +225,7 @@ async def list_tools(
         }
 
     try:
-        from ..mcp_servers import MCPServerFactory
+        from mcp_servers import MCPServerFactory
         servers = MCPServerFactory.create_all_servers(config)
 
         all_tools = []

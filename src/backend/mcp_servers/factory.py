@@ -7,9 +7,9 @@ from typing import Optional
 from .base import MCPServerBase
 from .gitlab_server import GitLabMCPServer
 from .github_server import GitHubMCPServer
-from ..core.enums import PlatformType
-from ..infrastructure.database.models import UserConfigInDB
-from ..utils.logger import get_logger
+from core.enums import PlatformType
+from infrastructure.database.models import UserConfigInDB
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

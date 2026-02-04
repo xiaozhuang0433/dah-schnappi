@@ -5,15 +5,15 @@ Configuration API Router
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Dict, Any
-from src.infrastructure.database.models import (
+from infrastructure.database.models import (
     UserConfigResponse,
     UserConfigUpdate,
     GitLabConfigUpdate,
     GitHubConfigUpdate
 )
-from src.auth.dependencies import get_current_user, get_current_user_id
-from src.services.config_service import ConfigService
-from src.utils.logger import get_logger
+from auth.dependencies import get_current_user, get_current_user_id
+from services.config_service import ConfigService
+from utils.logger import get_logger
 
 
 router = APIRouter(prefix="/api/config", tags=["Configuration"])

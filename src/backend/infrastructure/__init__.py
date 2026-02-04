@@ -3,12 +3,12 @@ Infrastructure Package
 
 提供数据库和缓存的抽象层及实现。
 """
-from .database import DatabaseABC, DuckDBDatabase
-from .cache import CacheABC, MemoryCache
+from .database import DatabaseABC, db
+from .cache import CacheABC, cache
 
 __all__ = [
     "DatabaseABC",
-    "DuckDBDatabase",
+    "db",
     "CacheABC",
-    "MemoryCache"
+    "cache"
 ]

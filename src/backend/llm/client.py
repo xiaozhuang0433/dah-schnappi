@@ -7,8 +7,8 @@ from typing import Optional
 from .base import LLMClientABC
 from .claude import ClaudeClient
 from .openai import OpenAIClient
-from ..config.settings import settings
-from ..utils.logger import get_logger
+from config.settings import settings
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

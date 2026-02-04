@@ -7,7 +7,7 @@ from typing import List, Optional
 from datetime import datetime
 from .base import CommitFetcherABC
 from .models import GitCommit, GitProject
-from ..utils.api import APIClient
+from utils.api import APIClient
 
 
 class GitLabFetcher(CommitFetcherABC):

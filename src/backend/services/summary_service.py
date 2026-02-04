@@ -3,13 +3,13 @@ Summary Service
 
 工作日志生成服务，从提交记录生成 Markdown 工作日志。
 """
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from datetime import datetime
 from collections import defaultdict
 
-from ..core.models import GitCommit, WorkLogEntry, WorkLogReport
-from ..core.enums import TaskType
-from ..utils.logger import get_logger
+from core.models import GitCommit, WorkLogEntry, WorkLogReport
+from core.enums import TaskType
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

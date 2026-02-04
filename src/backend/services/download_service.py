@@ -5,13 +5,13 @@ Download Service
 """
 import base64
 import uuid
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from datetime import datetime
 from pathlib import Path
 
-from ..summary_service import get_summary_service
-from ..core.models import WorkLogReport
-from ..utils.logger import get_logger
+from services.summary_service import get_summary_service
+from core.models import WorkLogReport
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

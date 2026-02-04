@@ -5,10 +5,10 @@ User Configuration Service
 """
 from typing import Optional
 from fastapi import HTTPException, status
-from src.infrastructure.database import db, UserConfigInDB, UserConfigUpdate, GitLabConfigUpdate, GitHubConfigUpdate
-from src.infrastructure.cache import cache
-from src.utils.crypto import get_crypto
-from src.utils.logger import get_logger
+from infrastructure.database import db, UserConfigInDB, UserConfigUpdate, GitLabConfigUpdate, GitHubConfigUpdate
+from infrastructure.cache import cache
+from utils.crypto import get_crypto
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

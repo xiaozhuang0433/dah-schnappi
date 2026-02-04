@@ -5,7 +5,7 @@ Health Check API Router
 """
 from fastapi import APIRouter
 from datetime import datetime
-from ..config.settings import settings
+from config.settings import settings
 
 
 router = APIRouter(prefix="/api", tags=["Health"])

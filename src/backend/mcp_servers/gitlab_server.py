@@ -6,9 +6,9 @@ GitLab MCP Server
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 from .base import MCPServerBase
-from ..core.fetchers import GitLabFetcher
-from ..core.models import GitCommit, GitProject
-from ..utils.logger import get_logger
+from core.fetchers import GitLabFetcher
+from core.models import GitCommit, GitProject
+from utils.logger import get_logger
 
 
 logger = get_logger(__name__)

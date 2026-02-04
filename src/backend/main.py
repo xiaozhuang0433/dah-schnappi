@@ -3,17 +3,25 @@ FastAPI Main Application
 
 工作日志系统的主应用程序入口。
 """
+import sys
+from pathlib import Path
+
+# 添加 src 目录到 Python 路径
+src_dir = Path(__file__).parent.parent
+if str(src_dir) not in sys.path:
+    sys.path.insert(0, str(src_dir))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from src.config.settings import settings
-from src.infrastructure.database import db
-from src.infrastructure.cache import cache
-from src.utils.logger import setup_logger, get_logger
-from src.auth.router import router as auth_router
-from src.api.config import router as config_router
-from src.api.chat import router as chat_router
-from src.api.health import router as health_router
+from config.settings import settings
+from infrastructure.database import db
+from infrastructure.cache import cache
+from utils.logger import setup_logger, get_logger
+from auth.router import router as auth_router
+from api.config import router as config_router
+from api.chat import router as chat_router
+from api.health import router as health_router
 
 
 # 设置日志

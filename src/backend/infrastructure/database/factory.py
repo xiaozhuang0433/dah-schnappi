@@ -2,11 +2,11 @@
 """
 根据配置创建数据库实例
 """
-from src.config.settings import settings
-from src.infrastructure.database.base import DatabaseABC
-from src.infrastructure.database.sqlite_impl import SQLiteDatabase
-from src.infrastructure.database.postgres_impl import PostgreSQLDatabase
-from src.infrastructure.database.mysql_impl import MySQLDatabase
+from config.settings import settings
+from infrastructure.database.base import DatabaseABC
+from infrastructure.database.sqlite_impl import SQLiteDatabase
+from infrastructure.database.postgres_impl import PostgreSQLDatabase
+from infrastructure.database.mysql_impl import MySQLDatabase
 
 
 def get_database() -> DatabaseABC:

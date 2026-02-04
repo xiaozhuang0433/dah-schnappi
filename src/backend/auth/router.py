@@ -5,12 +5,12 @@ Authentication Router
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import EmailStr
-from src.infrastructure.database import db, UserInDB, UserCreate, UserResponse, UserLogin
-from src.infrastructure.cache import cache
-from src.auth.security import verify_password, get_password_hash, create_access_token
-from src.auth.dependencies import get_current_user, get_current_user_id
-from src.utils.crypto import get_crypto
-from src.utils.logger import get_logger
+from infrastructure.database import db, UserInDB, UserCreate, UserResponse, UserLogin
+from infrastructure.cache import cache
+from auth.security import verify_password, get_password_hash, create_access_token
+from auth.dependencies import get_current_user, get_current_user_id
+from utils.crypto import get_crypto
+from utils.logger import get_logger
 from typing import Dict, Any
 
 
