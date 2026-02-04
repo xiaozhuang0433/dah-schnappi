@@ -22,22 +22,38 @@ Emoji: 🐊
 ## 📁 目录结构
 
 ```
-工作日志/                        # 根目录
-├── CLAUDE.md                   # 本文档，系统说明
-├── template.md                 # 月度工作日志模板
-├── src/                        # 辅助脚本目录
-│   ├── README.md               # 脚本说明文档
-│   ├── fetch_commits_gitlab.py # GitLab提交记录获取脚本
-│   ├── fetch_commits_github.py # GitHub提交记录获取脚本（待创建）
-│   ├── generate_report.py      # 生成统计报告脚本
-│   └── ...                     # 其他辅助工具
-└── work_report/                # 工作日志目录
-    ├── YYYY-MM.md              # 当前活跃的月度日志（参与分析）
-    └── archive/                # 归档目录（不参与分析）
-        ├── 2025-01.md
-        ├── 2025-02.md
-        └── ...
+DahSchnappi/                     # 根目录
+├── README.md                   # 项目说明（英文）
+├── README_CN.md                # 项目说明（中文）
+├── CLAUDE.md                   # 本文档，AI协作规约
+├── docs/                       # 📚 项目文档目录（除README外的所有文档）
+│   ├── DEPLOYMENT.md           # 部署指南
+│   ├── MIGRATION.md            # 数据迁移指南
+│   └── template.md             # 月度工作日志模板
+├── src/                        # 源代码目录
+│   ├── backend/                # FastAPI 后端
+│   └── frontend/               # React 前端
+└── work_report/                # 工作日志目录（仅工作日志系统使用）
+    ├── YYYY-MM.md              # 当前活跃的月度日志
+    └── archive/                # 归档目录
 ```
+
+### 📚 文档目录规约
+
+**根目录保留的文档：**
+- ✅ `README.md` - 项目主说明（英文）
+- ✅ `README_CN.md` - 项目主说明（中文）
+- ✅ `CLAUDE.md` - AI协作规约（必读）
+
+**其他所有文档统一放在 `docs/` 目录：**
+- 部署指南、API文档、开发指南等
+- 模板文件、示例文件
+- 所有非README的技术文档
+
+**遵循原则：**
+1. 根目录保持简洁，只放核心说明文档
+2. 详细文档统一管理在 `docs/` 下
+3. 新增文档时自觉放入 `docs/`，除非是README类文件
 
 ## 🎯 核心逻辑
 
