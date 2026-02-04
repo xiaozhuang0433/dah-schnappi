@@ -26,12 +26,17 @@ DahSchnappi/                     # 根目录
 ├── README.md                   # 项目说明（英文）
 ├── README_CN.md                # 项目说明（中文）
 ├── CLAUDE.md                   # 本文档，AI协作规约
-├── docs/                       # 📚 项目文档目录（除README外的所有文档）
+├── docker-compose.yml          # Docker 编排配置
+├── docs/                       # 📚 项目文档目录
 │   ├── DEPLOYMENT.md           # 部署指南
 │   ├── MIGRATION.md            # 数据迁移指南
 │   └── template.md             # 月度工作日志模板
 ├── src/                        # 源代码目录
 │   ├── backend/                # FastAPI 后端
+│   │   ├── .env.example        # 后端环境变量模板
+│   │   ├── Dockerfile          # 后端 Docker 镜像
+│   │   ├── requirements.txt    # Python 依赖
+│   │   └── main.py             # 应用入口
 │   └── frontend/               # React 前端
 └── work_report/                # 工作日志目录（仅工作日志系统使用）
     ├── YYYY-MM.md              # 当前活跃的月度日志
@@ -57,20 +62,21 @@ DahSchnappi/                     # 根目录
 
 ### 🔐 环境变量文件规约
 
-**只保留根目录 `.env.example`：**
-- ✅ 根目录 `.env.example` - 配置模板（唯一位置）
-- ✅ 根目录 `.env` - 实际配置（从 .env.example 复制，不提交）
-- ✅ 代码会自动向上查找 `.env` 文件
+**后端专属配置：**
+- ✅ `src/backend/.env.example` - 后端配置模板（唯一位置）
+- ✅ `src/backend/.env` - 实际配置（手动创建，不提交）
 
 **使用方式：**
 ```bash
-# 从项目根目录配置
+# 手动运行
+cd src/backend
 cp .env.example .env
 vim .env  # 编辑配置
+python main.py
 
-# 然后无论 Docker 还是手动运行，都能找到 .env
-docker-compose up -d        # Docker 自动读取根目录 .env
-cd src/backend && python main.py  # 代码自动向上查找 .env
+# Docker 运行
+# 环境变量在 docker-compose.yml 中配置，或通过 .env 文件传入
+docker-compose up -d
 ```
 
 **注意：**

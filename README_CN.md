@@ -57,9 +57,8 @@
 git clone <repo-url>
 cd 工作日志
 
-# 2. 配置环境变量
-cp .env.example .env
-# 编辑 .env 文件，填入你的 API 密钥
+# 2. 配置环境变量（在 docker-compose.yml 中）
+# 编辑 ANTHROPIC_API_KEY 和 OPENAI_API_KEY
 
 # 3. 使用 Docker Compose 部署
 docker-compose up -d
@@ -75,14 +74,14 @@ docker-compose up -d
 **后端：**
 
 ```bash
-# 1. 配置环境变量（在项目根目录）
-cp .env.example .env
-# 编辑 .env 文件，填入你的 API 密钥和密钥
-
-# 2. 创建虚拟环境
+# 1. 创建虚拟环境
 cd src/backend
 python -m venv venv
 source venv/bin/activate  # Windows：venv\Scripts\activate
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件，填入你的 API 密钥和密钥
 
 # 3. 安装依赖
 pip install -r requirements.txt
