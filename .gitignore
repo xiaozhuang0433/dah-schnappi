@@ -76,3 +76,4 @@ work_report/
 
 # Claude history
 .claude/
+/src/backend/data/
