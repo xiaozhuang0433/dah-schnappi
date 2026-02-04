@@ -55,6 +55,20 @@ DahSchnappi/                     # 根目录
 2. 详细文档统一管理在 `docs/` 下
 3. 新增文档时自觉放入 `docs/`，除非是README类文件
 
+### 🔐 环境变量文件规约
+
+**`.env.example` 需要在两个位置：**
+- ✅ **根目录 `.env.example`** - Docker Compose 部署使用
+- ✅ **`src/backend/.env.example`** - 手动运行使用
+
+**实际 `.env` 文件：**
+- Docker 部署：在根目录创建 `.env`（从 `.env.example` 复制）
+- 手动运行：在 `src/backend/` 创建 `.env`（从 `.env.example` 复制）
+
+**注意：**
+- ⚠️ `.env` 文件包含敏感信息，已在 `.gitignore` 中排除
+- ✅ `.env.example` 可以提交，作为配置模板
+
 ## 🎯 核心逻辑
 
 ### 1. 活跃日志 vs 归档日志

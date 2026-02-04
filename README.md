@@ -80,6 +80,10 @@ cd src/backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
+# Configure environment variables
+cp .env.example .env
+# Edit .env with your API keys and secrets
+
 # Install dependencies
 pip install -r requirements.txt
 
