@@ -77,7 +77,7 @@ class Settings(BaseSettings):
     LOG_FILE: Optional[str] = "logs/worklog.log"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=[".env", "../.env", "../../.env"],  # 依次查找：当前目录、父目录、祖父目录
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore"

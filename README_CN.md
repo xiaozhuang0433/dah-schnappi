@@ -75,19 +75,19 @@ docker-compose up -d
 **后端：**
 
 ```bash
-# 创建虚拟环境
+# 1. 配置环境变量（在项目根目录）
+cp .env.example .env
+# 编辑 .env 文件，填入你的 API 密钥和密钥
+
+# 2. 创建虚拟环境
 cd src/backend
 python -m venv venv
 source venv/bin/activate  # Windows：venv\Scripts\activate
 
-# 配置环境变量
-cp .env.example .env
-# 编辑 .env 文件，填入你的 API 密钥和密钥
-
-# 安装依赖
+# 3. 安装依赖
 pip install -r requirements.txt
 
-# 运行
+# 4. 运行
 python main.py
 ```
 

@@ -75,19 +75,19 @@ docker-compose up -d
 **Backend:**
 
 ```bash
-# Create virtual environment
+# 1. Configure environment variables (from project root)
+cp .env.example .env
+# Edit .env with your API keys and secrets
+
+# 2. Create virtual environment
 cd src/backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Configure environment variables
-cp .env.example .env
-# Edit .env with your API keys and secrets
-
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# Run
+# 4. Run
 python main.py
 ```
 

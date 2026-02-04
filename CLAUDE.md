@@ -57,16 +57,24 @@ DahSchnappi/                     # 根目录
 
 ### 🔐 环境变量文件规约
 
-**`.env.example` 需要在两个位置：**
-- ✅ **根目录 `.env.example`** - Docker Compose 部署使用
-- ✅ **`src/backend/.env.example`** - 手动运行使用
+**只保留根目录 `.env.example`：**
+- ✅ 根目录 `.env.example` - 配置模板（唯一位置）
+- ✅ 根目录 `.env` - 实际配置（从 .env.example 复制，不提交）
+- ✅ 代码会自动向上查找 `.env` 文件
 
-**实际 `.env` 文件：**
-- Docker 部署：在根目录创建 `.env`（从 `.env.example` 复制）
-- 手动运行：在 `src/backend/` 创建 `.env`（从 `.env.example` 复制）
+**使用方式：**
+```bash
+# 从项目根目录配置
+cp .env.example .env
+vim .env  # 编辑配置
+
+# 然后无论 Docker 还是手动运行，都能找到 .env
+docker-compose up -d        # Docker 自动读取根目录 .env
+cd src/backend && python main.py  # 代码自动向上查找 .env
+```
 
 **注意：**
-- ⚠️ `.env` 文件包含敏感信息，已在 `.gitignore` 中排除
+- ⚠️ `.env` 已在 `.gitignore` 中排除，不提交敏感信息
 - ✅ `.env.example` 可以提交，作为配置模板
 
 ## 🎯 核心逻辑
